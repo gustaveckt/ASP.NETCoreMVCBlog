@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Blog.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Blog.Static;
 
 namespace Blog.Data
 {
@@ -141,6 +142,62 @@ namespace Blog.Data
 
                 entity.Property(e => e.Slug).HasMaxLength(50);
             });
+
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
+                {
+                    Id = "14a926ab-158b-4cbb-8adb-31a51d8d5e4a",
+                    Name = AppRoles.User,
+                    NormalizedName = AppRoles.User.ToUpper(),
+                },
+                new IdentityRole
+                {
+                    Id = "b7871b4d-f86b-41a6-8767-dc9ce09044a1",
+                    Name = AppRoles.Admin,
+                    NormalizedName = AppRoles.Admin.ToUpper(),
+                }
+             );
+
+            var hasher = new PasswordHasher<ApplicationUser>();
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser
+                {
+                    Id = "a8a16aaaa-bd7e-4db7-b472-b7be15ea5297",
+                    Email = "admin@figuil.com",
+                    NormalizedEmail = "ADMIN@FIGUIL.COM",
+                    UserName = "admin@figuil.com",
+                    Pseudonym = "sysadmin",
+                    NormalizedUserName = "ADMIN@FIGUIL.COM",
+                    FirstName = "System",
+                    LastName = "Admin",
+                    PasswordHash = hasher.HashPassword(null, "2910")
+                },
+                new ApplicationUser
+                {
+                    Id = "f1ee4fa3-140a-493c-956c-b1aa7775c4f5",
+                    Email = "user@figuil.com",
+                    NormalizedEmail = "USER@FIGUIL.COM",
+                    UserName = "user@figuil.com",
+                    Pseudonym = "sysuser",
+                    NormalizedUserName = "USER@FIGUIL.COM",
+                    FirstName = "System",
+                    LastName = "User",
+                    PasswordHash = hasher.HashPassword(null, "2910")
+                }
+             );
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = "b7871b4d-f86b-41a6-8767-dc9ce09044a1",
+                    UserId = "a8a16aaaa-bd7e-4db7-b472-b7be15ea5297"
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "14a926ab-158b-4cbb-8adb-31a51d8d5e4a",
+                    UserId = "f1ee4fa3-140a-493c-956c-b1aa7775c4f5"
+                }
+            );
 
             OnModelCreatingPartial(modelBuilder);
         }
