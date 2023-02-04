@@ -2,5 +2,6 @@
 {
     public class CategoryDetailsDto : CategoryReadDto
     {
+        public string Slug { get; set; } = null!;
     }
 }

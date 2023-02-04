@@ -11,7 +11,7 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="#" class="nav-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @user.Pseudonym
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -32,11 +32,11 @@
     }
     else
     {
-        <li class="nav-item">
+       @* <li class="nav-item">
             <a class="btn btn-primary" id="register" asp-area="Identity" asp-page="/Account/Register">Inscription</a>
-        </li>
-        <li class="nav-item ms-2">
-            <a class="btn btn-outline-primary" id="login" asp-area="Identity" asp-page="/Account/Login">Connexion</a>
+        </li>*@
+        <li class="nav-item">
+            <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Connexion</a>
         </li>
     }
 </ul>

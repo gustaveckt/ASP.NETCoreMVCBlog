@@ -1,4 +1,6 @@
 ﻿using Blog.Models;
+using Blog.Static;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

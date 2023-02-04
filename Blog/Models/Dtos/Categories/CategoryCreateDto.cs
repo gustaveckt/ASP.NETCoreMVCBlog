@@ -9,6 +9,8 @@ namespace Blog.Models.Dtos.Categories
         public string Name { get; set; } = null!;
 
         [StringLength(250)]
-        public string? Description { get; set; } = null!;
+        public string? Description { get; set; }
+        
+        public string? Icon { get; set; }
     }
 }

@@ -1,18 +1,4 @@
 ﻿<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -33,12 +19,13 @@
 
     <!-- CSS Files -->
 
-    <link id="pagestyle" href="~/assets/css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
+    <link id="pagestyle" href="~/css/app.css" rel="stylesheet" />
+    <link id="pagestyle" href="~/css/site.css" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
 
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-white"
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-white"   
            id="sidenav-main">
 
         <div class="sidenav-header">
@@ -61,16 +48,25 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark " href="./tables.html">
+                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Categories" asp-action="Index">
                         <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                           <i class="material-icons opacity-10">category</i>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Categories</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark " href="./billing.html">
+                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Tags" asp-action="Index">
+                        <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
+                           <i class="material-icons opacity-10">category</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Tags</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Tags" asp-action="Index">
                         <div class="text-dark text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">receipt_long</i>
                         </div>
@@ -82,10 +78,9 @@
 
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
-                <a class="btn bg-light mt-4 w-100"
-                   href="" type="button">
-                    Logout
-                </a>
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button id="logout" type="submit" class="mt-4 mb-2 w-100 btn btn-light">Logout</button>
+                </form>
             </div>
 
         </div>

@@ -21,6 +21,10 @@ body {
     margin-bottom: .5rem;
 }
 
+.form-floating > .form-control{
+    padding: .5rem;
+}
+
 .button-reset {
     background: none;
     color: inherit;
@@ -29,4 +33,22 @@ body {
     font: inherit;
     cursor: pointer;
     outline: inherit;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-top: 1rem;
+}
+
+.control-label {
+    margin: 0 0 0 2px;
+}
+
+.table-bordered > :not(caption) > * > * {
+    border-width: 0 1px;
 }
